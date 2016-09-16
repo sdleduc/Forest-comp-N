@@ -1,0 +1,13 @@
+##additional code for plotting stem count as in previous code
+forest.stems.Nall <-   ggplot(forest.merge4,
+                                aes(x = spid, y = delta_stems)) +
+  geom_boxplot() +
+  geom_point(stat = "summary",
+             fun.y = "mean",
+             color = "red") +
+  labs(title="Tree response to Nitrogen deposition", x="Species", y = "change in stem count, 2100-2005")
+
+forest.stems.Nall <- forest.stems.Nall +  facet_grid(ndep_scenario ~. , labeller=ndep_labeller)
+
+
+forest.stems.Nall <- forest.stems.Nall + theme_minimal()
